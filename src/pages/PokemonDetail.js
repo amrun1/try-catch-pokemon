@@ -42,6 +42,7 @@ export default function DetailPokemon() {
 
                     <div className="col-12 col-sm-4" style={{ textAlign: "-webkit-center" }}>
                         <img
+                            rel="preload"
                             style={{ width: "16rem", height: "16rem", padding: "1rem" }}
                             src={data.detail.url.detail}
                             alt="cover"

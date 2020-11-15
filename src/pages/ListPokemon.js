@@ -33,12 +33,13 @@ export default function ListPokemon() {
                         <Link to={"/" + pokemon.image.id} key={index} className="col-12 col-sm-2" style={{ textAlign: "-webkit-center" }}>
                             <div style={{ width: "75%" }}>
                                 <div className="card" >
-                                    {/* <img
+                                    <img
+                                        rel="preload"
                                         style={{ width: "8rem", height: "8rem", alignSelf: "center", padding: "1rem" }}
                                         src={pokemon.image.url.list}
                                         className="card-img-top"
                                         alt="cover"
-                                    /> */}
+                                    />
                                     <div className="card-body">
                                         <h5 className="card-title">{pokemon.name}</h5>
                                         <p className="card-text">{pokemon.image.id}</p>
