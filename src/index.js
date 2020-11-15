@@ -9,16 +9,16 @@ import { RestLink } from 'apollo-link-rest';
 
 const restLink = new RestLink({
   endpoints: {
-    uri: {
+    uri_custom_response: {
       uri: 'https://pokeapi.co/api/v2/',
       responseTransformer: async response => response.json().then(({ results, next }) => { return { detail: results, next: next } })
     },
     blank: {
       uri: '',
-      responseTransformer: async response => response.json().then(({ sprites, id }) => { return { url: sprites.other["official-artwork"].front_default, id: id } })
+      responseTransformer: async response => response.json().then(({ sprites, id, species, abilities, flavor_text_entries, effect_entries, evolution_chain, chain }) => { if (effect_entries !== undefined) { return effect_entries.filter(data => data.language.name === 'en')[0].effect } else if (flavor_text_entries !== undefined) { return { description: flavor_text_entries.filter(data => data.version.name === 'red')[0].flavor_text, evolution_chain_url: evolution_chain.url } } else if (chain !== undefined) {return 'test' } else { return { url: { list: sprites.other.dream_world.front_default, detail: sprites.other['official-artwork'].front_default }, id: id, name: species.name, abilities: abilities, url_species: species.url } } })
     },
-    test: "http://10.20.201.69:8080/api.elastics.request/alokasi/v1/getforsuplier"
-  }
+  },
+  uri: 'https://pokeapi.co/api/v2/'
 })
 
 const client = new ApolloClient({
