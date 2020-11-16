@@ -1,0 +1,20 @@
+export const ColorType = [
+    { type: "normal", color: '#aa9' },
+    { type: "fire", color: '#f42' },
+    { type: "water", color: '#39f' },
+    { type: "electric", color: '#fc3' },
+    { type: "grass", color: '#7c5' },
+    { type: "ice", color: '#6cf' },
+    { type: "fighting", color: '#b54' },
+    { type: "poison", color: '#a59' },
+    { type: "ground", color: '#db5' },
+    { type: "flying", color: '#89f' },
+    { type: "psychic", color: '#f59' },
+    { type: "bug", color: '#ab2' },
+    { type: "rock", color: '#ba6' },
+    { type: "ghost", color: '#66b' },
+    { type: "dragon", color: '#76e' },
+    { type: "dark", color: '#754' },
+    { type: "steel", color: '#aab' },
+    { type: "fairy", color: '#e9e' }
+]

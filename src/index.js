@@ -18,7 +18,7 @@ const restLink = new RestLink({
     },
     blank: {
       uri: '',
-      responseTransformer: async response => response.json().then(({ sprites, id, species, abilities, flavor_text_entries, effect_entries, evolution_chain, chain }) => { if (effect_entries !== undefined) { return effect_entries.filter(data => data.language.name === 'en')[0].effect } else if (flavor_text_entries !== undefined) { return { description: flavor_text_entries.filter(data => data.version.name === 'red')[0].flavor_text, evolution_chain_url: evolution_chain.url } } else if (chain !== undefined) { return 'test' } else { return { url: { list: sprites.front_default, detail: sprites.other['official-artwork'].front_default }, id: id, name: species.name, abilities: abilities, url_species: species.url } } })
+      responseTransformer: async response => response.json().then(({ sprites, id, species, abilities, flavor_text_entries, effect_entries, moves, types }) => { if (effect_entries !== undefined) { return effect_entries.filter(data => data.language.name === 'en')[0].effect } else if (flavor_text_entries !== undefined) { return { description: flavor_text_entries.filter(data => data.version.name === 'silver')[0].flavor_text } } else { return { url: { list: sprites.front_default, detail: sprites.other['official-artwork'].front_default }, id: id, name: species.name, abilities: abilities, moves: moves, url_species: species.url, types: types } } })
     },
   },
   uri: 'https://pokeapi.co/api/v2/'

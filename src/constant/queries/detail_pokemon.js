@@ -5,7 +5,17 @@ query getDetail($url: String!) {
       id @export(as: "id")
       url
       name
-      abilities @type(name: "Ability") {
+      moves @type(name:"[Move]"){
+        move @type(name:"Move"){
+          name
+        }
+      }
+      types @type(name:"[Type]"){
+        type @type(name:"Type"){
+          name
+        }
+      }
+      abilities @type(name: "[Ability]") {
         ability {
           name
           url @export(as: "url")
@@ -15,8 +25,6 @@ query getDetail($url: String!) {
       url_species @export(as: "url_species")
       general @rest(type: "General", path: "{exportVariables.url_species}", endpoint: "blank") {
         description
-        evolution_chain_url @export(as: "url_evolution")
-        evolution @rest(type: "Text", path: "{exportVariables.url_evolution}", endpoint: "blank")
       }
     }
   }`

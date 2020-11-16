@@ -6,6 +6,8 @@ import { DETAIL_POKEMON as DETAIL } from "../constant/index";
 
 const TextInput = lazy(() => import("../components/input/text_input"))
 const Modal = lazy(() => import('../components/modal/modal'))
+const CardDetail = lazy(() => import('../components/card/card_detail'))
+const CardMove = lazy(() => import('../components/card/card_moves'))
 
 const DETAIL_POKEMON = DETAIL
 
@@ -60,30 +62,9 @@ export default function DetailPokemon() {
 
     return (
         <>
-            <div className="container">
-                <h1>{data.detail.name}</h1>
-                <h1>{data.detail.id}</h1>
-                <div className="row">
-
-                    <div className="col-12 col-sm-4" style={{ textAlign: "-webkit-center" }}>
-                        <img
-                            rel="preload"
-                            style={{ width: "16rem", height: "16rem", padding: "1rem" }}
-                            src={data.detail.url.detail}
-                            alt="cover"
-                        />
-                    </div>
-                    <p className="col-12 col-sm-8">
-                        {data.detail.general.description}
-                    </p>
-                    {data.detail.abilities.map((res, index) => (
-                        <div className="col-12" key={index}>
-                            <h1>Ability : {res.ability.name}</h1>
-                            <p>effect : {res.ability.effect}</p>
-                        </div>
-                    ))}
-                    <button className="btn btn-primary" type="button" onClick={catchPokemon}>Catch</button>
-                </div>
+            <div className="container mb-5">
+                <Suspense fallback={<p>Loading...</p>}><CardDetail imageUrl={data.detail.url.detail} name={data.detail.name} description={data.detail.general.description} abilities={data.detail.abilities} types={data.detail.types}></CardDetail><CardMove moves={data.detail.moves} ></CardMove></Suspense>
+                <button className="btn btn-primary ml-3" type="button" onClick={catchPokemon}>Catch</button>
             </div>
             {isOpen && <Suspense fallback={<p>Loading...</p>}><Modal
                 content={<>

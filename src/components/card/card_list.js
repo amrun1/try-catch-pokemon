@@ -17,7 +17,6 @@ class CardList extends React.Component {
                     {this.props.nickname !== undefined && <p className="h5 text-dark text-break mb-auto">{this.props.nickname}</p>}
                     <p className={this.props.nickname !== undefined ? 'text-dark text-break mb-auto' : "h5 text-dark text-break"}>{capitallizeFirstLetter(this.props.name)}</p>
                     {this.props.total !== undefined && <p className="text-white bg-info col-8 rounded">{this.props.total} Owned</p>}
-                    {/* {props.release !== undefined && <button className="btn btn-danger" onClick={props.release}>Release</button>} */}
                 </div>
                 {this.props.release !== undefined && <div><button className="btn btn-danger" style={{ height: "100%" }} onClick={this.props.release}>Release</button></div>}
             </div>

@@ -1,6 +1,5 @@
 import React, { useContext, lazy, Suspense } from 'react'
 import { Context } from "../store/store";
-// import { CardList } from "../components/card";
 
 const CardList = lazy(() => import('../components/card/card_list'))
 
