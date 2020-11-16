@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { lazy, Suspense, useContext, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
-import Modal from "../components/modal/modal";
 import { Context } from "../store/store";
 import { DETAIL_POKEMON as DETAIL } from "../constant/index";
+
+const TextInput = lazy(() => import("../components/input/text_input"))
+const Modal = lazy(() => import('../components/modal/modal'))
 
 const DETAIL_POKEMON = DETAIL
 
@@ -83,23 +85,19 @@ export default function DetailPokemon() {
                     <button className="btn btn-primary" type="button" onClick={catchPokemon}>Catch</button>
                 </div>
             </div>
-            {isOpen && <Modal
+            {isOpen && <Suspense fallback={<p>Loading...</p>}><Modal
                 content={<>
                     <b>{modalProp.content}</b>
                     {modalProp.isInput &&
                         <div>
                             <form className="needs-validation" onSubmit={onSubmit} noValidate>
-                                <div>
-                                    <label>Nickname</label>
-                                    <input type="text" className={form.isValid ? "form-control" : "form-control is-invalid"} style={form.isValid ? { marginBottom: ".5rem" } : { marginBottom: "0rem" }}></input>
-                                    {!form.isValid && <small className="text-danger">{form.errorMessage}</small>}
-                                </div>
+                                <Suspense fallback={<p>Loading...</p>}><TextInput form={form} label="Nickname"></TextInput></Suspense>
                                 <button className="btn btn-primary" type="submit">Save</button>
                             </form>
                         </div>}
                 </>}
                 handleClose={togglePopup}
-            />}
+            /></Suspense>}
         </>
     )
 }

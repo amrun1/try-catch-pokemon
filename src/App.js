@@ -11,7 +11,9 @@ const Navbar = lazy(() => import('./components/navbar/navbar'))
 export default function App() {
   return (
     <Store>
-      <Navbar menu={Menu}></Navbar>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Navbar menu={Menu}></Navbar>
+      </Suspense>
       <Switch>
         <Suspense fallback={<div style={{ height: "100%", width: "100%", backgroundColor: "lightgray" }}><h1>Loading...</h1></div>}>
           <Route exact path="/" component={PokemonList} />
