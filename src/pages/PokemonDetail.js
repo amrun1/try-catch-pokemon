@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { Context } from "../store/store";
 import { DETAIL_POKEMON as DETAIL } from "../constant/index";
 
-const InputText = lazy(() => import("../components/input/text_input"))
+const InputText = lazy(() => import("../components/Input/text_input"))
 const Modal = lazy(() => import('../components/modal/modal'))
 const CardDetail = lazy(() => import('../components/card/card_detail'))
 const CardMove = lazy(() => import('../components/card/card_moves'))
