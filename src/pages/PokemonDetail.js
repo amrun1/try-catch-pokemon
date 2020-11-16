@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { Context } from "../store/store";
 import { DETAIL_POKEMON as DETAIL } from "../constant/index";
 
-const TextInput = lazy(() => import("../components/input/text_input"))
+const InputText = lazy(() => import("../components/input/text_input"))
 const Modal = lazy(() => import('../components/modal/modal'))
 const CardDetail = lazy(() => import('../components/card/card_detail'))
 const CardMove = lazy(() => import('../components/card/card_moves'))
@@ -72,7 +72,7 @@ export default function DetailPokemon() {
                     {modalProp.isInput &&
                         <div>
                             <form className="needs-validation" onSubmit={onSubmit} noValidate>
-                                <Suspense fallback={<p>Loading...</p>}><TextInput form={form} label="Nickname"></TextInput></Suspense>
+                                <Suspense fallback={<p>Loading...</p>}><InputText form={form} label="Nickname"></InputText></Suspense>
                                 <button className="btn btn-primary" type="submit">Save</button>
                             </form>
                         </div>}
