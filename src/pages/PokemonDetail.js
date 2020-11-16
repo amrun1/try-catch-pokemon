@@ -21,8 +21,7 @@ export default function DetailPokemon() {
     }
 
     const catchPokemon = () => {
-        // let catchStatus = Math.random() < 0.5 ? true : false
-        let catchStatus = true
+        let catchStatus = Math.random() < 0.5 ? true : false
         setModalProp({ content: catchStatus ? 'Congrat you caught it' : 'Oh, sorry, Pokemon is fleeing', isInput: catchStatus })
         togglePopup()
     }
