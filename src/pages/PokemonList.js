@@ -13,7 +13,18 @@ export default function PokemonList() {
     const { loading, error, data } = useQuery(LIST_POKEMON);
     const [state,] = useContext(Context)
 
-    if (loading) return <div style={{ height: "100%", width: "100%", backgroundColor: "lightgray" }}><p>Loading...</p></div>;
+    if (loading) return (<>
+        <div className="container">
+            <h1>Pokemon List</h1>
+            <div className="row">
+                <Link className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" style={{ textAlign: "-webkit-center", textDecoration: "none" }}>
+                    <Suspense fallback={<h1></h1>}>
+                        <CardList loading={true}></CardList>
+                    </Suspense>
+                </Link>
+            </div>
+        </div>
+    </>)
     if (error) return <p>Error :(</p>;
     return (
         <>
