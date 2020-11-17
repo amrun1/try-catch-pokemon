@@ -11,8 +11,4 @@ class InputText extends React.Component {
         )
     }
 }
-<<<<<<< HEAD:src/components/Input/text_input.js
 export default InputText
-=======
-export default TextInput
->>>>>>> 1c7a932fd285bb6b3410defbc8c38b043f0bc9e6:src/components/input/text_input.js
