@@ -14,7 +14,7 @@ function CardList(props) {
     if (error) return <p>Error :( </p>;
 
     return (
-        <div className="bg-light border rounded row m-1" style={props.release !== undefined ? { justifyContent: "space-between" } : {}}>
+        <div className="bg-light border rounded row m-1">
             <img
                 loading="lazy"
                 rel="preload"

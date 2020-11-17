@@ -11,7 +11,7 @@ const CardList = lazy(() => import('../components/card/card_list'))
 
 export default function PokemonList() {
 
-    var url = 'pokemon?offset=0&limit=30'
+    var url = 'pokemon?offset=0&limit=50'
 
     const { loading, error, data } = useQuery(LIST_POKEMON, { variables: { url } });
     const [state,] = useContext(Context)
@@ -40,7 +40,6 @@ export default function PokemonList() {
                                 <div className="bg-light border rounded row m-1">
                                     <div className="bg-light" style={{ width: "96px", height: "96px" }}></div>
                                 </div>}>
-                                {/* <CardList imageUrl={pokemon.image.url.list} name={pokemon.name} total={getOwnedTotal(state, pokemon.name)}></CardList> */}
                                 <CardList url={pokemon.url} name={pokemon.name} total={getOwnedTotal(state, pokemon.name)}></CardList>
                             </Suspense>
                         </Link>
