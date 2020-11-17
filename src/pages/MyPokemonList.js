@@ -1,7 +1,7 @@
 import React, { useContext, lazy, Suspense } from 'react'
 import { Context } from "../store/store";
 
-const CardList = lazy(() => import('../components/card/card_list'))
+const CardList = lazy(() => import('../components/card/card_my_list'))
 
 export default function MyPokemonList() {
     const [state, dispatch] = useContext(Context)

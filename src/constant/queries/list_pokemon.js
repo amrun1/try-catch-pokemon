@@ -8,10 +8,6 @@ query getPokemons {
       name
       owned
       url @export(as: "url")
-      image @rest(type: "ImageDetail", path: "{exportVariables.url}",endpoint:"blank"){
-          url
-          id
-      }
     }
   }
 }`

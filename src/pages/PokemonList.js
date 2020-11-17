@@ -17,11 +17,11 @@ export default function PokemonList() {
         <div className="container">
             <h1>Pokemon List</h1>
             <div className="row">
-                <Link className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" style={{ textAlign: "-webkit-center", textDecoration: "none" }}>
-                    <Suspense fallback={<h1></h1>}>
-                        <CardList loading={true}></CardList>
-                    </Suspense>
-                </Link>
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" style={{ textAlign: "-webkit-center", textDecoration: "none" }}>
+                    <div className="bg-light border rounded row m-1">
+                        <div className="bg-light" style={{ width: "96px", height: "96px" }}></div>
+                    </div>
+                </div>
             </div>
         </div>
     </>)
@@ -32,9 +32,13 @@ export default function PokemonList() {
                 <h1>Pokemon List</h1>
                 <div className="row">
                     {data.pokemon.detail.map((pokemon, index) => (
-                        <Link to={"/detail/" + pokemon.image.id} key={index} className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" style={{ textAlign: "-webkit-center", textDecoration: "none" }}>
-                            <Suspense fallback={<h1>Loading...</h1>}>
-                                <CardList imageUrl={pokemon.image.url.list} name={pokemon.name} total={getOwnedTotal(state, pokemon.name)}></CardList>
+                        <Link to={"/detail/" + pokemon.name} key={index} className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" style={{ textAlign: "-webkit-center", textDecoration: "none" }}>
+                            <Suspense fallback={
+                                <div className="bg-light border rounded row m-1">
+                                    <div className="bg-light" style={{ width: "96px", height: "96px" }}></div>
+                                </div>}>
+                                {/* <CardList imageUrl={pokemon.image.url.list} name={pokemon.name} total={getOwnedTotal(state, pokemon.name)}></CardList> */}
+                                <CardList url={pokemon.url} name={pokemon.name} total={getOwnedTotal(state, pokemon.name)}></CardList>
                             </Suspense>
                         </Link>
                     ))}
