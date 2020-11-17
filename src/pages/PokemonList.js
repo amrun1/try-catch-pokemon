@@ -10,7 +10,10 @@ const LIST_POKEMON = LIST
 const CardList = lazy(() => import('../components/card/card_list'))
 
 export default function PokemonList() {
-    const { loading, error, data } = useQuery(LIST_POKEMON);
+
+    var url = 'pokemon?offset=0&limit=30'
+
+    const { loading, error, data } = useQuery(LIST_POKEMON, { variables: { url } });
     const [state,] = useContext(Context)
 
     if (loading) return (<>
