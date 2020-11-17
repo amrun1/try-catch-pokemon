@@ -35,7 +35,7 @@ export default function DetailPokemon() {
         let input = e.target[0].value
         if (input !== '') {
             if (state.length > 0) {
-                if (state.find(item => item.nickname === input) === undefined) {
+                if (state.find(item => item.nickname.toLowerCase() === input.toLowerCase()) === undefined) {
                     setForm({ isValid: true })
                     dispatch({ type: 'add', pokemon: { name: data.detail.name, nickname: input, url: data.detail.url } })
                     togglePopup()
