@@ -14,6 +14,7 @@ const DETAIL_POKEMON = DETAIL
 export default function DetailPokemon() {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [isAlert, setIsAlert] = useState({ active: false, isSuccess: false, alertMessage: '' });
     const [modalProp, setModalProp] = useState({ content: '', isInput: false })
     const [form, setForm] = useState({ isValid: true, errorMessage: '' })
 
@@ -22,6 +23,13 @@ export default function DetailPokemon() {
     const togglePopup = () => {
         setForm({ isValid: true })
         setIsOpen(!isOpen);
+        if (isOpen && modalProp.isInput) {
+            setIsAlert({ active: true, isSuccess: false, alertMessage: "Releasing pokemon" })
+            setTimeout(
+                () => setIsAlert({ active: false }),
+                3000
+            );
+        }
     }
 
     const catchPokemon = () => {
@@ -39,13 +47,24 @@ export default function DetailPokemon() {
                     setForm({ isValid: true })
                     dispatch({ type: 'add', pokemon: { name: data.detail.name, nickname: input, url: data.detail.url } })
                     togglePopup()
+                    setIsAlert({ active: true, isSuccess: true, alertMessage: "Catching pokemon success" })
+                    setTimeout(
+                        () => setIsAlert({ active: false }),
+                        3000
+                    );
                 } else {
                     setForm({ isValid: false, errorMessage: 'Duplikat nickname' })
                 }
             } else {
                 setForm({ isValid: true })
                 dispatch({ type: 'add', pokemon: { name: data.detail.name, nickname: input, url: data.detail.url } })
+                setIsAlert(true)
                 togglePopup()
+                setIsAlert({ active: true, isSuccess: true, alertMessage: "Catching pokemon success" })
+                setTimeout(
+                    () => setIsAlert({ active: false }),
+                    3000
+                );
             }
         } else {
             setForm({ isValid: false, errorMessage: 'Cannot blank' })
@@ -79,6 +98,7 @@ export default function DetailPokemon() {
                 </>}
                 handleClose={togglePopup}
             /></Suspense>}
+            {isAlert.active && <div className={isAlert.isSuccess ? "alert alert-success" : "alert alert-danger"} role="alert" style={{ position: "fixed", right: "2%", bottom: '2%' }}>{isAlert.alertMessage}</div>}
         </>
     )
 }
